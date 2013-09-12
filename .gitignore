@@ -1,0 +1,19 @@
+# from our gradle build
+reports
+build
+.gradle
+publish
+generated
+
+# eclipse specific
+.classpath
+.project
+.settings/
+bin
+
+# idea specific
+*.iml
+*.ipr
+*.iws
+out
+.idea
