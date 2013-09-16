@@ -145,20 +145,20 @@ task findUpdates << {
     }
 }
 
-def deployUser = 'dummy';
+def repoUser = 'dummy';
 if (hasProperty('nexusUser')) {
-    deployUser = nexusUser
+    repoUser = nexusUser
 }
-def deployPw = 'dummy';
+def repoPw = 'dummy';
 if (hasProperty('nexusPassword')) {
-    deployPw = nexusPassword
+    repoPw = nexusPassword
 }
 
 uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: "http://nexus.collective-media.net/content/repositories/snapshots") {
-                authentication(userName: deployUser, password: deployPw)
+                authentication(userName: repoUser, password: repoPw)
             }
         }
     }
