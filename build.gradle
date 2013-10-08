@@ -33,7 +33,8 @@ dependencies {
     }
     compile(group: 'org.apache.avro', name: 'avro-ipc', version: '1.7.4') {
         // don't pull in an old ancient jetty version
-        transitive = false
+        exclude(group: 'org.mortbay.jetty', module: 'jetty')
+        exclude(group: 'org.mortbay.jetty', module: 'servlet-api')
     }
     compile(group: 'org.apache.flume', name: 'flume-ng-sdk', version: '1.3.1') {
         transitive = false
