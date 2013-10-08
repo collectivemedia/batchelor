@@ -158,7 +158,10 @@ if (hasProperty('nexusPassword')) {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "http://nexus.collective-media.net/content/repositories/snapshots") {
+            repository(url: "http://nexus.collective-media.net/content/repositories/releases") {
+                authentication(userName: repoUser, password: repoPw)
+            }
+            snapshotRepository(url: "http://nexus.collective-media.net/content/repositories/snapshots") {
                 authentication(userName: repoUser, password: repoPw)
             }
         }
