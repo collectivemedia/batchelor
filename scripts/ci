@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+exec ./gradlew clean jar test upload
