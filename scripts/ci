@@ -1,8 +1,3 @@
 #!/bin/bash -e
 
-if [[ "$TEST_HOST" = "" ]]; then
-  export TEST_HOST=127.0.0.3
-fi
-
-printf "Using test host: ${TEST_HOST}\n"
 exec ./gradlew clean jar test upload
