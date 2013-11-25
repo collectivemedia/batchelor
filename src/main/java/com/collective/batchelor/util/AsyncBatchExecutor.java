@@ -19,7 +19,7 @@ public class AsyncBatchExecutor<T> {
     class Worker extends Thread {
         private final int batchSize;
         private volatile boolean running = true;
-        private final List<T> messages;
+        final List<T> messages;
 
         private Worker(int batchSize) {
             this.batchSize = batchSize;
@@ -114,7 +114,7 @@ public class AsyncBatchExecutor<T> {
     }
 
     public int getQueueSize() {
-        return queue.size();
+        return queue.size() + workerThread.messages.size();
     }
 
     public float getQueueFillFraction() {
@@ -122,7 +122,7 @@ public class AsyncBatchExecutor<T> {
         if (queueSize == 0)
             return 0;
 
-        return (float) queue.size() / (float) queueSize;
+        return (float) getQueueSize() / (float) queueSize;
     }
 
     public void start() {
