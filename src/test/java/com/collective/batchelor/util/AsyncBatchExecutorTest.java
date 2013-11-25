@@ -36,11 +36,6 @@ public class AsyncBatchExecutorTest {
         executorService = new AsyncBatchExecutor<>(1, 3, handler, 500, 1000);
         executorService.start();
         executorService.add("bla");
-        // wait till the worker thread grabs the first element
-        while (executorService.getQueueSize() > 0)
-            Thread.sleep(10);
-
-        executorService.add("bla");
         assertThat(executorService.getQueueFillFraction()).isEqualTo(1f / 3f);
         executorService.add("bla");
         assertThat(executorService.getQueueFillFraction()).isEqualTo(2f / 3f);
